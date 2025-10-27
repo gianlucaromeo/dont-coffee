@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:16
+    container_name: postgres-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      # "volumes" mounts persistent storage so data is not lost when the
+      # container stops.
+
+      # Maps named volume pgdata to the internal database data directory.
+      - pgdata:/var/lib/postgresql/data
+  frontend:
+    container_name: nextjs-frontend
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        - PORT=${FRONTEND_PORT}
+    ports:
+      - ${FRONTEND_PORT}:${FRONTEND_PORT}
+
+    # Add for hot reloading in development
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/.next
+
+volumes:
+  pgdata:
