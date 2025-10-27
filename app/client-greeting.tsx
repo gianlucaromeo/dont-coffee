@@ -5,7 +5,7 @@ import { useTRPC } from "@/trpc/client";
 
 export function ClientGreeting() {
   const trpc = useTRPC();
-  const greeting = useQuery(trpc.hello.queryOptions({ text: "world" }));
+  const greeting = useQuery(trpc.hello.queryOptions({ text: "Gianluca" }));
 
   if (!greeting.data) return <div>Loading...</div>;
 
