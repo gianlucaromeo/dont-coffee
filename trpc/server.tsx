@@ -49,3 +49,11 @@ export function prefetch<T extends ReturnType<TRPCQueryOptions<any>>>(
     void queryClient.prefetchQuery(queryOptions);
   }
 }
+
+// Use it if you need access to the data in a server component.
+// For example: `caller.hello({ text: "World"})`
+//
+// This method is detached from your query client and does not store the data 
+// in the cache. This means that you cannot use the data in a server component 
+// and expect it to be available in the client.
+export const caller = appRouter.createCaller(createTRPCContext);

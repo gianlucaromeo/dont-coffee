@@ -1,13 +1,7 @@
-"use client";
+import { caller } from "@/trpc/server";
 
-import { useQuery } from "@tanstack/react-query";
-import { useTRPC } from "@/trpc/client";
+export async function ClientGreeting() {
+  const greeting = await caller.hello({ text: "Gianluca" });
 
-export function ClientGreeting() {
-  const trpc = useTRPC();
-  const greeting = useQuery(trpc.hello.queryOptions({ text: "Gianluca" }));
-
-  if (!greeting.data) return <div>Loading...</div>;
-
-  return <div>{greeting.data.greeting}</div>;
+  return <div>{greeting.greeting}</div>;
 }
