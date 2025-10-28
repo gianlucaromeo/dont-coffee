@@ -20,9 +20,24 @@ npm install
 npm run docker:start
 ```
 
+👉🏻 (One time) Migrate database:
+
+```shell
+npm run docker:db:push
+```
+
+👉🏻 (One time) Seed the database with mock data:
+
+```shell
+npm run docker:db:seed
+```
+
 👉🏻 Navigate to [localhost:3000](http://localhost:3000), read the instructions on the page and start solving the case!
 
-###  How to stop the development server
+### How to stop the development server
+
 ```bash
 npm run docker:stop
 ```
+
+> NOTE: When installing NPM dependencies you might need to stop (step 8) and start the development server again (step 4).
