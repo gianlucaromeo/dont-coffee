@@ -1,12 +1,12 @@
 import { HydrateClient, prefetch, trpc } from "@/src/app/lib/trpc/server";
-import { ClientGreeting } from "./components/common/client-greeting";
+import { WeeklyAssumptionsGrid } from "./components/common/weekly-assumptions-grid";
 
 export default async function Home() {
-  prefetch(trpc.hello.queryOptions({ text: "Gianluca" }));
+  prefetch(trpc.mock.dailyAssumptions.queryOptions());
 
   return (
     <HydrateClient>
-      <ClientGreeting />
+      <WeeklyAssumptionsGrid />
     </HydrateClient>
   );
 }
