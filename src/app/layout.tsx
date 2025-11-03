@@ -4,12 +4,12 @@ import "./globals.css";
 import { TRPCReactProvider } from "@/src/app/lib/trpc/client";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
+  variable: "--font-inter-sans",
   subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+  variable: "--font-inter-mono",
   subsets: ["latin"],
 });
 
